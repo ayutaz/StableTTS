@@ -145,7 +145,7 @@ def main():
         tts_button.click(inference, [input_text_gr, ref_audio_gr, language_gr, checkpoint_gr, step_gr], outputs=[audio_gr, mel_gr])
 
     demo.queue()  
-    demo.launch(debug=True, show_api=True)
+    demo.launch(debug=True, show_api=True,share=True)
 
 
 if __name__ == '__main__':

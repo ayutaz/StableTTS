@@ -19,7 +19,7 @@ class DataConfig:
     input_filelist_path = './filelists/filelist.txt' # a filelist contains 'audiopath | text'
     output_filelist_path = './filelists/filelist.json' # path to save filelist
     output_feature_path = './stableTTS_datasets' # path to save resampled audios and mel features
-    language = 'chinese' # chinese, japanese or english
+    language = 'japanese' # chinese, japanese or english
     resample = False # waveform is not used in training. However, it is used to calculate length for DistributedBucketSampler in training. Different samplerate or format may cause wrong bucket.
 
 g2p_mapping = {
