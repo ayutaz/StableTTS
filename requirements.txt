@@ -1,7 +1,7 @@
 torch
 torchaudio
 matplotlib
-numpy
+numpy<2
 tensorboard
 pypinyin
 jieba
