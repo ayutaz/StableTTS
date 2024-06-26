@@ -90,7 +90,10 @@ def main():
     last_checkpoint_path = None
     tts_model, mel_extractor, vocoder = get_pipeline(len(symbols), tts_model_config, mel_config, vocoder_config, tts_checkpoint_path, vocoder_checkpoint_path)
     
-    tts_checkpoint_path = [path for path in Path(tts_checkpoint_path).rglob('*.pt') if 'optimizer' and 'vocoder' not in path.name]
+    tts_checkpoint_path = [
+        str(path) for path in Path(tts_checkpoint_path).rglob('checkpoint*.pt')
+        if 'optimizer' not in path.name and 'vocoder' not in path.name
+    ]
 
     # gradio wabui
     gui_title = 'StableTTS'
@@ -107,7 +110,7 @@ def main():
                 input_text_gr = gr.Textbox(
                     label="Input Text",
                     info="One or two sentences at a time is better. Up to 200 text characters.",
-                    value="你好，世界！",
+                    value="こんにちは、今日はいい天気ですね！",
                 )
              
                 ref_audio_gr = gr.Audio(
@@ -118,7 +121,7 @@ def main():
                 language_gr = gr.Dropdown(
                     label='Language',
                     choices=list(g2p_mapping.keys()),
-                    value = 'chinese'
+                    value = 'japanese'
                 )
                 
                 checkpoint_gr = gr.Dropdown(
